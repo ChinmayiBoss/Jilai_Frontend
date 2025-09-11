@@ -1,0 +1,9 @@
+.coming-soon{
+  min-height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coming-soon .mb-4{
+  margin-bottom: 30px !important;
+}

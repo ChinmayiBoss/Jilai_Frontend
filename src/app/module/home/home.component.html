@@ -1,0 +1,499 @@
+<section *ngIf="isComingSoon" class="main-section coming-soon">
+  <div class="container">
+    <div class="main">
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+          <div class="public-sale verification-process">
+            <svg xmlns="http://www.w3.org/2000/svg" width="82" height="81" viewBox="0 0 82 81" fill="none">
+              <path d="M21.7059 38.3557C9.73726 38.3557 0 47.8604 0 59.5432C0 71.226 9.73726 80.7307 21.7059 80.7307C33.6745 80.7307 43.4118 71.226 43.4118 59.5432C43.4118 47.8604 33.6745 38.3557 21.7059 38.3557Z" fill="#F6D611"/>
+              <path d="M21.9927 69.8555H22.0137" stroke="#072A3D" stroke-width="4.44444" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21.9927 63.1888V49.8555" stroke="#072A3D" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M63.5077 20.4028C62.1757 20.4028 61.0959 19.3487 61.0959 18.0486V0H26.5273C22.5377 0 19.292 3.16823 19.292 7.06249V33.3803C20.0866 33.31 20.8907 33.2722 21.7038 33.2722C29.9243 33.2722 37.2833 36.9409 42.1533 42.6888H68.3312C69.6631 42.6888 70.743 43.7429 70.743 45.043C70.743 46.3431 69.6631 47.3972 68.3312 47.3972H45.3307C46.8382 50.2686 47.8103 53.4497 48.1224 56.8138H68.3312C69.6631 56.8138 70.743 57.8679 70.743 59.168C70.743 60.4681 69.6631 61.5222 68.3312 61.5222H48.1224C47.4011 69.297 43.1455 76.0907 36.9394 80.3555H74.7626C78.7521 80.3555 81.9979 77.1872 81.9979 73.293V20.4028H63.5077ZM68.3312 33.2722H32.9587C31.6267 33.2722 30.5469 32.2181 30.5469 30.918C30.5469 29.6179 31.6267 28.5639 32.9587 28.5639H68.3312C69.6631 28.5639 70.743 29.6179 70.743 30.918C70.743 32.2181 69.6631 33.2722 68.3312 33.2722Z" fill="#FAFAFA"/>
+              <path d="M65.9204 1.37842V15.6944H80.5857L65.9204 1.37842Z" fill="#FAFAFA"/>
+            </svg>
+            <div>
+              <h2>Verification in Progress</h2>
+              <p>Your KYC information is under review. You’ll receive an email once the process is complete.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+          <div class="public-sale coming-soon-stay text-center">
+            <h1>COMING SOON</h1>
+            <p>Get ready for something exciting! We're launching <b>2nd April  2025</b>. Stay tuned for an innovative experience designed just for you. <a href="#">Stay connected!</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div>
+  <!-- <section *ngIf="kycStatus !== 1 && docUploaded" class="main-section coming-soon">
+    <div class="container">
+          <div class="main">
+            <div class="row">
+              <div class="col-lg-12 mx-auto">
+                <div class="public-sale verification-process">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="82" height="81" viewBox="0 0 82 81" fill="none">
+                    <path d="M21.7059 38.3557C9.73726 38.3557 0 47.8604 0 59.5432C0 71.226 9.73726 80.7307 21.7059 80.7307C33.6745 80.7307 43.4118 71.226 43.4118 59.5432C43.4118 47.8604 33.6745 38.3557 21.7059 38.3557Z" fill="#F6D611"/>
+                    <path d="M21.9927 69.8555H22.0137" stroke="#072A3D" stroke-width="4.44444" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21.9927 63.1888V49.8555" stroke="#072A3D" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M63.5077 20.4028C62.1757 20.4028 61.0959 19.3487 61.0959 18.0486V0H26.5273C22.5377 0 19.292 3.16823 19.292 7.06249V33.3803C20.0866 33.31 20.8907 33.2722 21.7038 33.2722C29.9243 33.2722 37.2833 36.9409 42.1533 42.6888H68.3312C69.6631 42.6888 70.743 43.7429 70.743 45.043C70.743 46.3431 69.6631 47.3972 68.3312 47.3972H45.3307C46.8382 50.2686 47.8103 53.4497 48.1224 56.8138H68.3312C69.6631 56.8138 70.743 57.8679 70.743 59.168C70.743 60.4681 69.6631 61.5222 68.3312 61.5222H48.1224C47.4011 69.297 43.1455 76.0907 36.9394 80.3555H74.7626C78.7521 80.3555 81.9979 77.1872 81.9979 73.293V20.4028H63.5077ZM68.3312 33.2722H32.9587C31.6267 33.2722 30.5469 32.2181 30.5469 30.918C30.5469 29.6179 31.6267 28.5639 32.9587 28.5639H68.3312C69.6631 28.5639 70.743 29.6179 70.743 30.918C70.743 32.2181 69.6631 33.2722 68.3312 33.2722Z" fill="#FAFAFA"/>
+                    <path d="M65.9204 1.37842V15.6944H80.5857L65.9204 1.37842Z" fill="#FAFAFA"/>
+                  </svg>
+                  <div>
+                    <h2>Verification in Progress</h2>
+                    <p>Your KYC information is under review. You’ll receive an email once the process is complete.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </section> -->
+  <section *ngIf="kycStatus !== 1 || !docUploaded" class="main-section coming-soon">
+    <div class="container">
+          <div class="main">
+            <div class="row">
+              <div class="col-lg-12 mx-auto">
+                <div class="public-sale verification-process">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="82" height="81" viewBox="0 0 82 81" fill="none">
+                    <path d="M21.7059 38.3557C9.73726 38.3557 0 47.8604 0 59.5432C0 71.226 9.73726 80.7307 21.7059 80.7307C33.6745 80.7307 43.4118 71.226 43.4118 59.5432C43.4118 47.8604 33.6745 38.3557 21.7059 38.3557Z" fill="#F6D611"/>
+                    <path d="M21.9927 69.8555H22.0137" stroke="#072A3D" stroke-width="4.44444" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21.9927 63.1888V49.8555" stroke="#072A3D" stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M63.5077 20.4028C62.1757 20.4028 61.0959 19.3487 61.0959 18.0486V0H26.5273C22.5377 0 19.292 3.16823 19.292 7.06249V33.3803C20.0866 33.31 20.8907 33.2722 21.7038 33.2722C29.9243 33.2722 37.2833 36.9409 42.1533 42.6888H68.3312C69.6631 42.6888 70.743 43.7429 70.743 45.043C70.743 46.3431 69.6631 47.3972 68.3312 47.3972H45.3307C46.8382 50.2686 47.8103 53.4497 48.1224 56.8138H68.3312C69.6631 56.8138 70.743 57.8679 70.743 59.168C70.743 60.4681 69.6631 61.5222 68.3312 61.5222H48.1224C47.4011 69.297 43.1455 76.0907 36.9394 80.3555H74.7626C78.7521 80.3555 81.9979 77.1872 81.9979 73.293V20.4028H63.5077ZM68.3312 33.2722H32.9587C31.6267 33.2722 30.5469 32.2181 30.5469 30.918C30.5469 29.6179 31.6267 28.5639 32.9587 28.5639H68.3312C69.6631 28.5639 70.743 29.6179 70.743 30.918C70.743 32.2181 69.6631 33.2722 68.3312 33.2722Z" fill="#FAFAFA"/>
+                    <path d="M65.9204 1.37842V15.6944H80.5857L65.9204 1.37842Z" fill="#FAFAFA"/>
+                  </svg>
+                  <div *ngIf="kycStatus !== 1 && docUploaded">
+                    <h2>Verification in Progress</h2>
+                    <p>Your KYC information is under review. You’ll receive an email once the process is complete.</p>
+                  </div>
+                  <div class="doc-pending" *ngIf="!docUploaded">
+                    <div>
+                    <h2>Verification in Progress</h2>
+                    <p>To keep your account active and secure, please complete your KYC verification now.</p>
+                    </div>
+                    <button [routerLink]="['/kyc']" class="them-btn w-auto justify-content-center">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </section>
+<section class="main-section" *ngIf="!isUserRegistered">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main">
+          <!-- <div class="row">
+            <div class="col-lg-12">
+              <div class="public-sale">
+                <div class="row">
+                  <div class="col-12 col-lg-7 d-flex flex-column justify-content-center" *ngIf="startTime != undefined">
+                    <h1 *ngIf="startingTime < closingTime">Presale Count Down Ends In</h1>
+                    <h1 *ngIf="startingTime > closingTime">Private Presale Count Downstars Start In </h1>
+                    <p><span
+                      *ngIf="lockupPeriod"> Buy JILAI ERC20 you need to hold tokens for {{transformedLockupPeriod}}.</span>
+                    </p>
+                  </div>
+                  <div class="col-12 col-lg-5">
+                    <div class="counting-view">
+                      <div *ngIf="isLoading" class="loader"> </div>
+                      <ng-container *ngFor="let schedule of schedules">
+                        <div class="cols counting">
+                          <app-schedule-card [label]="schedule.label" [value]="schedule.value"></app-schedule-card>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!--start-->
+          <div class="row mb-5">
+            <div class="col-lg-5 col-md-7 col-md-12">
+              <div class="presale Public">
+                <h2>Public Sale</h2>
+                <!-- <p>This sale is currently in Round 1</p> -->
+
+                <div class="static-form">
+                  <div class="usdtdata">
+                    <div class="w-75">
+                      <h3>You pay</h3>
+                      <div></div>
+                      <input (keyup)="fromInput()" appNumbersOnly [disabled]="isLoading || kycStatus !== 1 || isFinalized || !currentWalletAddress"
+                        [(ngModel)]="fromInputValue" type="text" name="from" id="from" placeholder="0.0" autocomplete="off">
+
+                    </div>
+                    <div class="d-flex flex-column">
+                      <a class="usdtbtn img-fluid"><img src="assets/images/ethereum.png" alt="ETH"> ETH</a>
+                      <h6>Balance : {{ethBalance | number}}</h6>
+                    </div>
+                  </div>
+                  <div class="usdtdata">
+                    <div class="w-75">
+                      <h3>You Receive</h3>
+                        <input (keyup)="toInput()" appNumbersOnly [disabled]="isLoading || kycStatus !== 1 || isFinalized || !currentWalletAddress"
+                          [(ngModel)]="toInputValue" type="text" name="to" id="to" placeholder="0.0" autocomplete="off">
+                    </div>
+                    <div class="d-flex flex-column">
+                      <a class="aocbtn">
+                        <!-- <img src="assets/images/jilai-logo.png" alt="jilai" class="img-fluid"> JILAI</a> -->
+                        <img src="assets/images/favicon.png" width="46" height="46" alt="jilai" class="img-fluid">{{tokenSymbol}}</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- <button class="them-btn w-100 justify-content-center" (click)="buyNow()">Buy Token</button> -->
+                <button *ngIf="isWrongNetwork" class="them-btn w-100 justify-content-center buytoken-disabled" type="button">
+                  <div *ngIf="isLoading" class="loader"> </div>
+                  <span *ngIf="!isLoading" class="buytoken w-100 d-block text-center"> Switch Network </span>
+                  <span *ngIf="isLoading" class="loaderText"> Processing... Please wait! </span>
+                </button>
+
+                <button *ngIf="!isWrongNetwork" class="them-btn w-100 justify-content-center" [ngClass]="{'disabled-button' : disableBuyNOW()}"
+                   type="button" [disabled]="disableBuyNOW()"
+                  data-bs-toggle="modal" data-bs-target="#risk-disclosureModal">
+                  <div *ngIf="isLoading" class="loader"> </div>
+                  <span *ngIf="!isFinalized">
+                    <span *ngIf="!checkSaleStartDate">
+                      <!-- <span *ngIf="vestingUserInfo.monthsCompleted === this.vestingMonth"> VESTING DURATION ENDED
+                      </span> -->
+                      <!-- <span
+                        *ngIf="!isLoading  && checkSaleDate && !(vestingUserInfo.monthsCompleted === this.vestingMonth)">
+                        BUY NOW </span> -->
+                      <span *ngIf="!isLoading">BUY NOW</span>
+                      <span *ngIf="isLoading" class="loaderText"> Processing... Please wait!
+                      </span>
+                      <span *ngIf="!checkSaleDate">Sale Date End</span>
+                    </span>
+                    <span *ngIf="checkSaleStartDate">Sale yet not started</span>
+                  </span>
+                  <span *ngIf="isFinalized">Sale Finalized</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-md-12">
+              <div class="presale mb-30">
+                <div class="cstage">
+                  <h2>Public Sale Details</h2>
+                  <p>Current Stage: <b>{{ +currentStage + 1}}</b></p>
+                </div>
+                <!--{{JILAITokenObject.name}}-->
+                <!-- <p>Phase Currently in <span>Public Sale</span> </p> -->
+                <div class="pt-32 pb-2">
+                  <h4>Contract address:</h4>
+                </div>
+                <div class="walletaddress">
+                  <h5>
+                    {{ jilaiTokenObject?.tokenAddress?.slice(0, 18) }}.....{{jilaiTokenObject?.tokenAddress?.slice(jilaiTokenObject!.tokenAddress!.length
+                    - 18)}}
+                  </h5>
+                  <span (click)="copyToClipboard(jilaiTokenObject!.tokenAddress)" class="cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <g clip-path="url(#clip0_3299_3608)">
+                        <path d="M17 9.90968C17 9.20234 16.719 8.52398 16.2189 8.02382C15.7187 7.52366 15.0403 7.24268 14.333 7.24268H5.667C5.31676 7.24268 4.96996 7.31166 4.64638 7.44569C4.32281 7.57972 4.0288 7.77617 3.78115 8.02382C3.53349 8.27148 3.33704 8.56548 3.20301 8.88906C3.06898 9.21263 3 9.55944 3 9.90968V18.5757C3 18.9259 3.06898 19.2727 3.20301 19.5963C3.33704 19.9199 3.53349 20.2139 3.78115 20.4615C4.0288 20.7092 4.32281 20.9056 4.64638 21.0397C4.96996 21.1737 5.31676 21.2427 5.667 21.2427H14.333C14.6832 21.2427 15.03 21.1737 15.3536 21.0397C15.6772 20.9056 15.9712 20.7092 16.2189 20.4615C16.4665 20.2139 16.663 19.9199 16.797 19.5963C16.931 19.2727 17 18.9259 17 18.5757V9.90968Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19.988 16.9797C20.2947 16.8049 20.5497 16.5522 20.7274 16.2472C20.9051 15.9422 20.9991 15.5957 21 15.2427V5.24268C21 4.14268 20.1 3.24268 19 3.24268H9C8.25 3.24268 7.842 3.62768 7.5 4.24268" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_3299_3608">
+                          <rect width="24" height="24" fill="white" transform="matrix(-1 0 0 1 24 0)"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                </div>
+                <div class="lines">
+                  <div class="dots"></div>
+                </div>
+                <div class="usdt-details">
+                  <div class="detail">
+                    <h5>1 JIL.AI</h5>
+                    <h6>= {{tokenRate}}
+                      USD</h6>
+                  </div>
+
+                  <div class="detail">
+                    <h5>Total JILAI for sale</h5>
+                    <h6>{{rewardTokenBalanceInContract | number}}</h6>
+                  </div>
+                  <div class="detail">
+                    <h5>Remaining JILAI for sale</h5>
+                    <h6>{{tokensRemaining | truncateDecimals:4 }}</h6>
+                  </div>
+                  <div class="detail">
+                    <h5>Total Contribution
+                       <!-- in {{usdtTokenObject?.symbol}} -->
+                      </h5>
+                    <h6>{{usdContributed | number}} USD</h6>
+                  </div>
+                  <!-- <div class="detail">
+                    <h5>Total Rewards</h5>
+                    <h6>{{userInfo.jilaiRecieved || '0'}} {{TOTOKENNAME}}</h6>
+                  </div> -->
+                </div>
+              </div>
+              <!-- <div class="presale" #pageScrollContainer></div> -->
+              <div class="presale mb-150">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-4">
+                  <div>
+                    <h2>Vesting Information</h2>
+                    <p class="info">* Vesting shall commence upon the completion of the public sale.</p>
+                    <!-- <p>Vesting Lockup Period: <span>{{lockupPeriodInDays}} Days</span></p> -->
+                    <!-- <div class="sale-detail-title">
+                      <h4>Token Unlocking Schedule</h4>
+                      <p>10% of invested tokens will be unlocked monthly for 10 months.</p>
+                    </div> -->
+                    <div class="pt-32 pb-2">
+                      <!-- <h5 class="sub-title">Claim Information</h5> -->
+                      <h4>Vesting smart contract address:</h4>
+                    </div>
+                    <div class="walletaddress">
+                      <h5>
+                        {{vestingAddress.slice(0,18)}}.....{{vestingAddress.slice(vestingAddress.length-18)}}
+                      </h5>
+                      <span (click)="copyToClipboard(vestingAddress)" class="cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <g clip-path="url(#clip0_3299_3608)">
+                            <path d="M17 9.90968C17 9.20234 16.719 8.52398 16.2189 8.02382C15.7187 7.52366 15.0403 7.24268 14.333 7.24268H5.667C5.31676 7.24268 4.96996 7.31166 4.64638 7.44569C4.32281 7.57972 4.0288 7.77617 3.78115 8.02382C3.53349 8.27148 3.33704 8.56548 3.20301 8.88906C3.06898 9.21263 3 9.55944 3 9.90968V18.5757C3 18.9259 3.06898 19.2727 3.20301 19.5963C3.33704 19.9199 3.53349 20.2139 3.78115 20.4615C4.0288 20.7092 4.32281 20.9056 4.64638 21.0397C4.96996 21.1737 5.31676 21.2427 5.667 21.2427H14.333C14.6832 21.2427 15.03 21.1737 15.3536 21.0397C15.6772 20.9056 15.9712 20.7092 16.2189 20.4615C16.4665 20.2139 16.663 19.9199 16.797 19.5963C16.931 19.2727 17 18.9259 17 18.5757V9.90968Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19.988 16.9797C20.2947 16.8049 20.5497 16.5522 20.7274 16.2472C20.9051 15.9422 20.9991 15.5957 21 15.2427V5.24268C21 4.14268 20.1 3.24268 19 3.24268H9C8.25 3.24268 7.842 3.62768 7.5 4.24268" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_3299_3608">
+                              <rect width="24" height="24" fill="white" transform="matrix(-1 0 0 1 24 0)"/>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="lines" style="margin-top:10px">
+                  <div class="dots"></div>
+                </div>
+                <div class="usdt-details vesting-details mb-6">
+                  <!-- <h5 class="sub-title">Claim Information</h5> -->
+                  <div class="detail">
+                    <h5>Total Vesting Allocation</h5>
+                    <h6>{{vestingDetails.amountForClaim | number}} {{tokenSymbol}}</h6>
+                  </div>
+                  <div class="detail">
+                    <h5>Total Tokens Claimed</h5>
+                    <h6>{{vestingDetails.amountClaimed | number}} {{tokenSymbol}}</h6>
+                  </div>
+                  <div class="detail">
+                    <h5>Tokens Available for Claim</h5>
+                    <h6>{{vestingDetails.remainingAmount | number}} {{tokenSymbol}}</h6>
+                  </div>
+                  <!-- <div class="detail">
+                    <h5>Tokens Remaining for Claim</h5>
+                    <h6>{{vestingUserInfo.availableToClaim}} JILAI</h6>
+                  </div> -->
+                  <div class="detail">
+                    <h5>Next Claim Date & Time</h5>
+                    <h6 *ngIf="buttonState !== 'VESTING DURATION ENDED' && vestingUserInfo.nextClaimDatetime !== 0">
+                      {{vestingDetails.nextClaimDate}}</h6>
+                    <h6 *ngIf="vestingUserInfo.nextClaimDatetime === 0 || buttonState === 'VESTING DURATION ENDED'">
+                      {{vestingDetails.nextClaimDate}}</h6>
+                  </div>
+                  <div class="detail">
+                    <h5>No.of Months Claimed</h5>
+                    <h6>{{vestingDetails.monthsClaimed}}</h6>
+                  </div>
+                  <div class="detail">
+                    <h5>Total Vesting Months</h5>
+                    <h6>{{vestingDetails.vestingMonths}}</h6>
+                  </div>
+                </div>
+                <div class="mx-auto vesting-buttons">
+                  <button [ngClass]="{ 'disabled-button': disable}" *ngIf="!isWrongNetwork"
+                    class="them-btn justify-content-center disabled-button" (click)="claimVestedTokens()" type="button"
+                    [disabled]="buttonState !== 'CLAIM YOUR TOKENS' || isClaimLoading">
+                    <div *ngIf="isClaimLoading" class="loader"> </div>
+                    <span *ngIf="!isClaimLoading && buttonState === 'CLAIM YOUR TOKENS'"> Claim your Tokens </span>
+                    <span *ngIf="isClaimLoading" class="loaderText"> Processing... Please wait!
+                    </span>
+                    <span *ngIf="buttonState !== 'CLAIM YOUR TOKENS'">{{buttonState}}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end-->
+
+          <!--start-->
+          <!-- <div class="row">
+            <div class="col-lg-12">
+              <div class="presale ">
+                <h3 class="text-center mb-5"> Roadmap</h3>
+                <div class="col-xl-10 mx-auto">
+                  <div class="roadmap-wrap mb-0">
+                    <div class="roadmap-line"></div>
+                    <ng-container *ngFor="let data of roadMapData">
+                    <app-road-map-card [data]="data"></app-road-map-card>
+                  </ng-container>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div> -->
+          <!--end-->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="legalDisclaimerModal" tabindex="-1" aria-labelledby="legalDisclaimerModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 pb-0" id="legalDisclaimerModalLabel">LEGAL DISCLAIMER</h1>
+          </div>
+          <div class="modal-body">
+            <p>
+              Please read this legal notice carefully. In case of doubt, contact lawyers, legal experts or other
+              competent legal professionals. All information provided does not claim to be complete and should not be
+              construed as part of a separate contractual agreement. The JILAI token is an asset token created on the
+              Ethereum blockchain, so it cannot be purchased or used for speculative or investment purposes. The JILAI
+              token will be issued by a technical process that uses the Ethereum Blockchain. This is an open-source IT
+              protocol over which Anthis International SA has no rights or liability in terms of its development and
+              operation. By purchasing the JILAI token, the Buyer acknowledges and understands therefore that Anthis
+              International SA (incl. its bodies and employees) assumes no liability or responsibility for any loss or
+              damage that would result from or relate to the incapacity to use the JILAI token, the Anthis International
+              SA’s Platform, excepted in case of intentional misconduct or gross negligence. The JILAI token is based on
+              the Ethereum Blockchain. Any malfunction, unplanned function or unexpected operation of the Ethereum
+              Blockchain may cause the JILAI token to malfunction or operate in a way that is not expected. Anthis
+              International SA assumes no liability or responsibility in this respect except in case of intentional
+              misconduct or gross negligence directly attributable to Anthis International SA. Anthis International SA
+              assumes no liability or responsibility whatsoever for any loss of the JILAI token or situations making it
+              impossible to access the JILAI token, which may result from any actions or omissions of the Buyer, as well
+              as in case of hacker attacks. Anthis International SA is not liable for any loss or damage arising from
+              the use of the material and contents of this White Paper, including written material, links to third party
+              sites, data, quotes, charts and buy/sell signals
+            </p>
+            <h3>Knowledge required</h3>
+            <p>
+              Any buyer purchasing the JILAI token shall understand and have significant experience of cryptocurrencies,
+              blockchain systems and services, and understand the risks associated with the purchase of the JILAI token
+              as well as the mechanisms related to the use and custody of cryptocurrencies. By purchasing the JILAI
+              token the buyer acknowledges having carefully reviewed this White Paper so to understand the risks, costs
+              and benefits associated with the purchase, storage and use of the JILAI token.
+            </p>
+            <h3>No Investment Invitation</h3>
+            <p>
+              The JILAI token is not qualified as a security, therefore this White Paper shall not and cannot be
+              considered as a prospectus or as an invitation to enter into an investment. This White Paper do not
+              constitute or relate in any way, nor should they be considered or interpreted as an offering of securities
+              in any jurisdiction. This White Paper do not include or contain any information or indication that might
+              be considered or interpreted as a recommendation or that might be used to base any investment decision.
+              This White Paper do not constitute an offer or an invitation to purchase shares, bonds, securities or
+              rights belonging to Anthis International SA or any related or associated company (the “Anthis
+              International SA’s Group”). This White Paper does not obligate you to enter into a contract or make a
+              legally binding commitment to contribute. This White Paper does not constitute any form or part of an
+              opinion that could be construed as advice or that could be used to sell or solicit an offer to purchase
+              our token, nor should it be construed as part of an effect that could be used in the formation of a
+              contract or an investment or purchase decision.
+            </p>
+            <h3>No Security</h3>
+            <p>address
+              The sale of JILAI token is final: the JILAI token is non-refundable and not redeemable. The JILAI token
+              are not convertible in shares or certificates of the Anthis International SA or Anthis International SA’s
+              Group and do not grant any right to receive any such share or certificate. The JILAI token do not confer
+              any direct or indirect right to Anthis International SA or Anthis International SA’s Group capital or
+              income and, in particular, do not grant any right to dividends or interests or to any other share or
+              participation to the Anthis International SA or Anthis International SA’s Group revenue or earnings. The
+              JILAI token are not shares or participation certificates and do not give any right to participate to, or
+              vote in, the general meeting of the Anthis International SA or the Anthis International SA ‘s Group or to
+              influence in any way the respective corporate governance or the decisions of the corporate bodies of the
+              Anthis International SA or the Anthis International SA ‘s Group. Anthis International SA considers that
+              the JILAI token does not have the legal qualification of a security pursuant to Swiss Law. The offering of
+              the JILAI token on an exchange platform is not done for speculative purposes and does not change the legal
+              qualification of the token as an asset backed token.
+            </p>
+            <h3>No Offer – No Investment Advise – No Representations and Warranties</h3>
+            <p>
+              This White Paper shall not be construed as an offer, personal recommendation or solicitation to conclude a
+              transaction and should not be treated as giving investment advice. Anthis International SA is not to be
+              considered as an advisor in any legal, tax or financial matters. Any information in the White Paper is
+              given for general information purpose only and Anthis International SA does not provide any representation
+              and/or warranty as to the accuracy and completeness of the information included in this White Paper. Given
+              the lack of qualification of the crypto-token in most countries, the buyer is strongly advised to carry
+              out a legal and tax analysis concerning the purchase and ownership of the JILAI token according to his/her
+              nationality and place of residence.
+            </p>
+            <h3>Tax Compliance</h3>
+            <p>
+              Buyers of the JILAI token are entirely responsible for determining any taxes applicable to their
+              transactions. The Company is not responsible for determining the taxes applicable to transactions.
+            </p>
+            <form>
+              <div class="form-check mb-3">
+                <input class="form-check-input" [(ngModel)]="agreedToDisclaimer" name="agreedToDisclaimer"
+                  type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </form>
+            <div class="modal-footer-btn d-flex justify-content-end">
+              <button type="button" [disabled]="!agreedToDisclaimer" class="btn save">Accept</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<app-signup *ngIf="isUserRegistered" [currentWalletAddress]="walletAddress"></app-signup>
+<app-register-modal [isRegistered]="isAlreadyAnUser"></app-register-modal>
+
+<!-- Modal -->
+<div class="modal fade" id="risk-disclosureModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="risk-disclosureModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered  modal-lg">
+    <div class="modal-content">
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <img src="assets/images/close.png" alt="close" width="44"/>
+        </button> -->
+      <div class="modal-body">
+        <h1 id="risk-disclosureModalLabel">Risk Disclosure & Legal Disclaimer - JIL.AI Token</h1>
+        <h3>Community Utility Token</h3>
+        <p>JIL.AI (Julia I) is a digital utility token issued and governed by The Global Charitable DAO. It is intended for use within a community-driven philanthropic ecosystem and not as a speculative or investment asset.</p>
+        <h3>Volatility Warning</h3>
+        <p>Token holders should be aware that digital assets like JIL.AI are subject to substantial price volatility. The market value of the token may fluctuate over time and could decrease significantly due to market conditions, ecosystem adoption, trading behavior, or external factors. There is <b>no guarantee</b> of value preservation or price performance.</p>
+          <h3>Custodial Treasury Fund</h3>
+          <p>A community treasury has been established with significant funds held in custody to support long-term ecosystem development, grants, operations, and strategic initiatives. These funds are <b>not intended</b> to guarantee the token's market value, provide liquidity protection, or serve as a price floor mechanism. Use of treasury assets is subject to DAO governance and discretion.</p>
+          <h3>No Investment Advice or Profit Expectation</h3>
+          <p>JIL.AI is <b>not a security</b>. It is not an investment vehicle and is not designed to generate profits, dividends, or financial returns for holders. Ownership of JIL.AI does not represent equity, debt, or any other financial interest in any entity. No portion of the project's communication should be interpreted as investment advice or a solicitation of investment.</p>
+
+          <h3>Regulatory and Legal Risk</h3>
+          <p>Participation in the JIL.AI ecosystem may be subject to legal or regulatory restrictions in certain jurisdictions. Each participant is solely responsible for understanding and complying with applicable laws and regulations before acquiring or using the token.</p>
+
+          <h3>Limitation of Liability</h3>
+          <p>The Global Charitable DAO, its affiliates, trustees, and contributors disclaim all liability for any loss or damages arising from the acquisition, holding, or use of JIL.AI tokens, including market value fluctuations, technical failures, or regulatory actions.</p>
+
+          <h3>Acknowledgment of Risk</h3>
+          <p>By participating in the JIL.AI token ecosystem, you acknowledge and accept that you are doing so voluntarily, without reliance on representations of guaranteed value or return, and fully understand the inherent risks of digital assets.</p>
+
+
+        <div class="row row-gap-3">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <button class="them-btn w-100 justify-content-center" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <button class="them-btn w-100 justify-content-center" (click)="buyNow()" data-bs-dismiss="modal" aria-label="Close">Agree & Continue</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

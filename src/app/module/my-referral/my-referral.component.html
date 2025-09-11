@@ -1,0 +1,88 @@
+<section class="profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4">
+       <app-sidebar />
+      </div>
+      <div class="col-lg-9 col-md-8">
+          <div class="signup-wrap">
+            <a [routerLink]="['/home']" class="d-flex align-items-center gap-2 back-arrow"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10.1 23a1 1 0 0 0 0-1.41L5.5 17h23.55a1 1 0 0 0 0-2H5.53l4.57-4.57A1 1 0 0 0 8.68 9l-6.36 6.37a.9.9 0 0 0 0 1.27L8.68 23a1 1 0 0 0 1.42 0Z" data-name="Layer 2" fill="currentColor" class="fill-000000"></path></svg> Back</a>
+            <h3>My Referral</h3>
+            <p>Share your referral link & track your invites effortlessly.</p>
+            <div class="copy-link-social">
+              <div class="">
+                <div class="copy-link">
+                  <div class="form-group mb-0">
+                    <input type="text" class="form-control" placeholder="AffiliateLink" [value]="affiliateLink" formControlName="name" readonly>
+                  </div>
+                    <span (click)="copyToClipboard(affiliateLink)" class="copy them-btn">
+                      <img src="assets/images/copy.svg" alt="copy" />
+                      Copy Link
+                    </span>
+                </div>
+              </div>
+              <div class="">
+                  <ul class="social">
+                    <li>
+                      <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.08335 0.666504C3.09181 0.666504 0.666687 3.09162 0.666687 6.08317V16.9165C0.666687 19.908 3.09181 22.3332 6.08335 22.3332H16.9167C19.9082 22.3332 22.3334 19.9081 22.3334 16.9165V6.08317C22.3334 3.09163 19.9082 0.666504 16.9167 0.666504H6.08335ZM18 6.08317C18.5983 6.08317 19.0834 5.59815 19.0834 4.99984C19.0834 4.40153 18.5983 3.9165 18 3.9165C17.4017 3.9165 16.9167 4.40153 16.9167 4.99984C16.9167 5.59815 17.4017 6.08317 18 6.08317ZM16.9167 11.4998C16.9167 14.4914 14.4916 16.9165 11.5 16.9165C8.50848 16.9165 6.08335 14.4914 6.08335 11.4998C6.08335 8.50829 8.50848 6.08317 11.5 6.08317C14.4916 6.08317 16.9167 8.50829 16.9167 11.4998ZM11.4994 14.7502C13.2943 14.7502 14.7494 13.2951 14.7494 11.5002C14.7494 9.70524 13.2943 8.25016 11.4994 8.25016C9.70444 8.25016 8.24937 9.70524 8.24937 11.5002C8.24937 13.2951 9.70444 14.7502 11.4994 14.7502Z" fill="currentColor" fill-opacity="0.75"/>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.69988 7.55481L11.5901 14.0204C12.7297 14.8492 14.2736 14.8492 15.4132 14.0204L24.3028 7.55524C24.0423 5.41109 22.2158 3.75 20.0013 3.75H7.0013C4.78698 3.75 2.96058 5.41086 2.69988 7.55481ZM24.3346 10.2112L16.6876 15.7727C14.7882 17.154 12.2151 17.154 10.3157 15.7727L2.66797 10.2107V18.9167C2.66797 21.3099 4.60807 23.25 7.0013 23.25H20.0013C22.3945 23.25 24.3346 21.3099 24.3346 18.9167V10.2112Z" fill="currentColor" fill-opacity="0.75"/>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M24.3327 13.4993C24.3327 19.4824 19.4824 24.3327 13.4993 24.3327C11.8444 24.3327 10.2762 23.9616 8.87332 23.2981L4.15505 24.0845C3.42382 24.2064 2.78894 23.5743 2.90759 22.8425L3.67961 18.0808C3.02928 16.6893 2.66602 15.1367 2.66602 13.4993C2.66602 7.51626 7.51626 2.66602 13.4993 2.66602C19.4824 2.66602 24.3327 7.51626 24.3327 13.4993ZM17.8327 16.3972V16.8697C17.8327 17.4015 17.4015 17.8327 16.8697 17.8327C12.6151 17.8327 9.16599 14.3836 9.16599 10.129C9.16599 9.59715 9.59712 9.16602 10.1289 9.16602H10.6015C11.1885 9.16602 11.7163 9.52339 11.9343 10.0684L12.1365 10.5738C12.3625 11.1388 12.1177 11.7828 11.5734 12.0549C11.5734 12.0549 11.8141 13.2586 12.7771 14.2216C13.7401 15.1845 14.9438 15.4253 14.9438 15.4253C15.2159 14.881 15.8598 14.6362 16.4249 14.8622L16.9303 15.0643C17.4753 15.2823 17.8327 15.8102 17.8327 16.3972Z" fill="currentColor" fill-opacity="0.75"/>
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                          <path d="M17.0602 4.8335C14.781 4.8335 12.9334 6.7736 12.9334 9.16683C12.9334 9.52847 12.9756 9.87976 13.055 10.2156C10.8635 10.2156 7.56267 9.7725 4.80591 7.01057C4.43932 6.6433 3.76336 6.88886 3.78878 7.40714C4.19734 15.7347 7.76376 18.1638 9.60037 18.315C8.4144 19.4863 6.69162 20.4109 4.95806 20.8259C4.50054 20.9354 4.38752 21.4362 4.8349 21.5818C6.07534 21.9852 7.85086 22.1406 8.80656 22.1668C15.5675 22.1668 21.0626 16.4762 21.1849 9.40765C22.0725 8.8304 22.6411 7.57703 22.9606 6.68914C23.0384 6.4729 22.684 6.22095 22.4718 6.30928C21.8088 6.58533 20.9669 6.65077 20.2499 6.41712C19.493 5.4502 18.3452 4.8335 17.0602 4.8335Z" fill="currentColor" fill-opacity="0.75"/>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Email Id</th>
+                    <th scope="col">Wallet Address</th>
+                    <th scope="col">Token Purchased</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <tr *ngFor="let referral of referrals">
+                    <td>{{referral.first_name}} {{referral.last_name}}</td>
+                    <td>{{referral.email}}</td>
+                    <td>
+                      <div *ngFor="let wallet of referral.wallet_address" class="d-flex justify-content-between align-items-center gap-1 mb-0">
+                        <span style="word-break: break-word;">{{ wallet }}</span>
+                        <span (click)="copyToClipboard(wallet)" style="cursor: pointer;">
+                          <img src="assets/images/copy.svg" alt="copy" width="16" />
+                        </span>
+                      </div>
+                    </td>
+                    <td class="text-center">{{referral.token_purchased}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>

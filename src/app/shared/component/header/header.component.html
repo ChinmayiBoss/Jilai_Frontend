@@ -1,0 +1,125 @@
+<section class="main-dashboard">
+    <header>
+        <nav #navbarTop id="navbar_top" class="navbar navbar-expand-lg">
+            <div class="container cursor-pointer">
+              <a [routerLink]="['/']" class="navbar-brand cursor-pointer" >
+                <img src="assets/images/logo_jilai.png" alt="logo" class="img-fluid " width="120">
+              </a>
+              <div class="header-right">
+                <!-- <button class="them-btn" data-bs-toggle="modal" data-bs-target="#presaleAccessModal">
+                  <img src="assets/images/presale-access.svg" alt="Presale Access" class="img-fluid " width="28"> Presale Access
+                </button> -->
+                <div *ngIf="!connectorInfo" class="d-flex align-items-center gap-2 gap-md-4">
+                <button id="walletButton" (click)="onConnectWallet()" class="connect">Connect Wallet</button>
+
+                  <!-- <appkit-button id="walletButton" balance="hide"  /> -->
+                  <!-- <form class="right-side">
+                    <w3m-button balance='hide' />
+                  </form> -->
+                </div>
+                <div>
+                  <div class="dropdown" #dropdown>
+                    <button *ngIf="connectorInfo" (click)="toggleDropdown()" class="wallet-btn dropdown-toggle" type="button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9997 2H17.9997C19.6784 2 21.1156 3.03408 21.709 4.5H8.2905C8.88389 3.03408 10.3211 2 11.9997 2ZM2 12V16H6C7.10457 16 8 15.1046 8 14C8 12.8954 7.10457 12 6 12H2ZM22 6H6C3.79086 6 2 7.79086 2 10V10.5H6C7.933 10.5 9.5 12.067 9.5 14C9.5 15.933 7.933 17.5 6 17.5H2V18C2 20.2091 3.79086 22 6 22H18C20.2091 22 22 20.2091 22 18V6Z" fill="#031931" fill-opacity="0.7"/>
+                      </svg>
+                      {{connectorInfo?.slice(0,5)}}.....{{connectorInfo?.slice(connectorInfo!.length - 6)}}
+                      <svg class="ml5" xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6" fill="none">
+                        <path d="M1 1L6 5L11 1" stroke="#031B34" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                    <button *ngIf="!connectorInfo" (click)="toggleDropdown()" class="wallet-btn dropdown-toggle" type="button">
+                      {{username}}
+                      <svg class="ml5" xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6" fill="none">
+                        <path d="M1 1L6 5L11 1" stroke="#031B34" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"  #dropdownMenu>
+                      <li>
+                        <p>{{username}}</p>
+                        <a *ngIf="connectorInfo" (click)="copyToClipboard(connectorInfo)" class="copy-clip">
+                          {{connectorInfo?.slice(0,9)}}.....{{connectorInfo?.slice(connectorInfo!.length - 11)}} <img src="assets/images/copy.svg" alt="copy" width="12" />
+                        </a>
+                      </li>
+                      <hr />
+                      <li (click)="navigateToProfile()"><a class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" viewBox="0 0 13 16" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.22157 7.11111C8.18525 7.11111 9.77713 5.51923 9.77713 3.55556C9.77713 1.59188 8.18525 0 6.22157 0C4.25789 0 2.66602 1.59188 2.66602 3.55556C2.66602 5.51923 4.25789 7.11111 6.22157 7.11111ZM6.22222 16C9.65866 16 12.4444 14.4081 12.4444 12.4444C12.4444 10.4808 9.65866 8.88889 6.22222 8.88889C2.78578 8.88889 0 10.4808 0 12.4444C0 14.4081 2.78578 16 6.22222 16Z" fill="currentColor" fill-opacity="0.8"/>
+                        </svg> Profile</a></li>
+                      <li *ngIf="isAffiliate"><a class="dropdown-item" [routerLink]="['/my-referral']"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.80422 6.87015C7.63556 6.87015 9.12015 5.38556 9.12015 3.55422C9.12015 1.72288 7.63556 0.238281 5.80422 0.238281C3.97288 0.238281 2.48828 1.72288 2.48828 3.55422C2.48828 5.38556 3.97288 6.87015 5.80422 6.87015ZM5.80289 15.1602C9.00773 15.1602 11.6058 13.6756 11.6058 11.8443C11.6058 10.0129 9.00773 8.52832 5.80289 8.52832C2.59804 8.52832 0 10.0129 0 11.8443C0 13.6756 2.59804 15.1602 5.80289 15.1602ZM9.08789 6.71714C9.87767 5.89732 10.3633 4.7825 10.3633 3.55425C10.3633 2.97015 10.2535 2.4117 10.0534 1.89844C11.3784 1.95324 12.4357 3.04475 12.4357 4.38323C12.4357 5.75674 11.3223 6.87018 9.9488 6.87018C9.64616 6.87018 9.35615 6.81612 9.08789 6.71714ZM12.8499 11.8446C12.8499 12.2913 12.7506 12.723 12.5656 13.1309C13.9802 12.6924 14.9223 11.909 14.9223 11.0156C14.9223 9.76702 13.082 8.73332 10.6836 8.55566C12.0188 9.38536 12.8499 10.5522 12.8499 11.8446Z" fill="currentColor" fill-opacity="0.8"/>
+                      </svg>
+                      My Referral</a></li>
+                      <li (click)="navigateToChangePassword()"><a class="dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" viewBox="0 0 13 16" fill="none">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.22157 7.11111C8.18525 7.11111 9.77713 5.51923 9.77713 3.55556C9.77713 1.59188 8.18525 0 6.22157 0C4.25789 0 2.66602 1.59188 2.66602 3.55556C2.66602 5.51923 4.25789 7.11111 6.22157 7.11111ZM6.22222 16C9.65866 16 12.4444 14.4081 12.4444 12.4444C12.4444 10.4808 9.65866 8.88889 6.22222 8.88889C2.78578 8.88889 0 10.4808 0 12.4444C0 14.4081 2.78578 16 6.22222 16Z" fill="currentColor" fill-opacity="0.8"/>
+                          </svg> Change Password</a></li>
+                      <li *ngIf="connectorInfo" (click)="handleDisconnect($event)"><a class="dropdown-item"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.54389 0.145508C1.58665 0.145508 0 1.73216 0 3.68939V9.65805C0 11.6153 1.58665 13.2019 3.54389 13.2019H8.95298C10.9102 13.2019 12.4969 11.6153 12.4969 9.65805C12.4969 9.34901 12.2463 9.09849 11.9373 9.09849C11.6283 9.09849 11.3777 9.34901 11.3777 9.65805C11.3777 10.9972 10.2921 12.0828 8.95298 12.0828H5.56884C6.16381 11.4489 6.52821 10.596 6.52821 9.65805V3.68939C6.52821 2.75141 6.16381 1.89854 5.56884 1.26463H8.95298C10.2921 1.26463 11.3777 2.35023 11.3777 3.68939C11.3777 3.99843 11.6283 4.24896 11.9373 4.24896C12.2463 4.24896 12.4969 3.99843 12.4969 3.68939C12.4969 1.73216 10.9102 0.145508 8.95298 0.145508H3.54389ZM12.7926 8.56155C12.5741 8.34303 12.5741 7.98874 12.7926 7.77021L13.3296 7.23328H8.76646C8.45742 7.23328 8.2069 6.98276 8.2069 6.67372C8.2069 6.36468 8.45742 6.11416 8.76646 6.11416H13.3296L12.7926 5.57723C12.5741 5.35871 12.5741 5.00441 12.7926 4.78589C13.0112 4.56737 13.3655 4.56737 13.584 4.78589L14.5486 5.75049C15.0585 6.26038 15.0585 7.08706 14.5486 7.59695L13.584 8.56155C13.3655 8.78008 13.0112 8.78008 12.7926 8.56155Z" fill="currentColor" fill-opacity="0.8"/>
+                      </svg>
+                      Disconnect Wallet</a></li>
+                      <li (click)="logout()"><a class="dropdown-item"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.54389 0.145508C1.58665 0.145508 0 1.73216 0 3.68939V9.65805C0 11.6153 1.58665 13.2019 3.54389 13.2019H8.95298C10.9102 13.2019 12.4969 11.6153 12.4969 9.65805C12.4969 9.34901 12.2463 9.09849 11.9373 9.09849C11.6283 9.09849 11.3777 9.34901 11.3777 9.65805C11.3777 10.9972 10.2921 12.0828 8.95298 12.0828H5.56884C6.16381 11.4489 6.52821 10.596 6.52821 9.65805V3.68939C6.52821 2.75141 6.16381 1.89854 5.56884 1.26463H8.95298C10.2921 1.26463 11.3777 2.35023 11.3777 3.68939C11.3777 3.99843 11.6283 4.24896 11.9373 4.24896C12.2463 4.24896 12.4969 3.99843 12.4969 3.68939C12.4969 1.73216 10.9102 0.145508 8.95298 0.145508H3.54389ZM12.7926 8.56155C12.5741 8.34303 12.5741 7.98874 12.7926 7.77021L13.3296 7.23328H8.76646C8.45742 7.23328 8.2069 6.98276 8.2069 6.67372C8.2069 6.36468 8.45742 6.11416 8.76646 6.11416H13.3296L12.7926 5.57723C12.5741 5.35871 12.5741 5.00441 12.7926 4.78589C13.0112 4.56737 13.3655 4.56737 13.584 4.78589L14.5486 5.75049C15.0585 6.26038 15.0585 7.08706 14.5486 7.59695L13.584 8.56155C13.3655 8.78008 13.0112 8.78008 12.7926 8.56155Z" fill="currentColor" fill-opacity="0.8"/>
+                      </svg>
+                      Log Out</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </nav>
+    </header>
+</section>
+
+
+<div class="modal fade" id="connect-WalletModal" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="connect-WalletModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+       <button #closeModalBtn  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <img src="assets/images/close.png" alt="close" width="44"/>
+        </button>
+      <div class="modal-body">
+        <ul>
+          <li>
+            <button (click)="connectWallet('injected')" class="connect mb-3">
+              <img src="assets/images/metamask.svg" alt="metamask" class="img-fluid " width="28"> Connect Metamask
+            </button>
+            <button (click)="connectWallet('coinbase')" class="connect mb-3">
+              <img src="assets/images/coinbase-icon.png" alt="coinbase" class="img-fluid me-1" width="28">Connect Coinbase
+            </button>
+            <button (click)="connectWallet('trust')" class="connect mb-3">
+              <img src="assets/images/trust-new.jpeg" alt="coinbase" class="img-fluid me-1" width="28">Connect Trust Wallet
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="presaleAccessModal" tabindex="-1" aria-labelledby="presaleAccessModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered  modal-lg">
+    <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <img src="assets/images/close.png" alt="close" width="44"/>
+        </button>
+      <div class="modal-body">
+        <h1 id="presaleAccessModalLabel">Private Presale Access</h1>
+        <p>JILAI Payments introduces a breakthrough in digital transaction solutions with its robust crypto payment gateway and its
+          complimetary token built on the scalable and efficient Polygon blockchain. The JILAI token (JIL) is at the core of our ecosystem,
+          offering unique utilities such as a 10% airdrop reward for consumers and reduced transaction costs for retailers.</p>
+          <p>Our strategic reinvestment approach ensures that profits from the gateway are used to buy back JIL tokens, driving growth and
+          market stability. The private presale offers an exclusive opportunity to acquire JIL tokens at a favorable price. Participants benefit
+          from early access to the ecosystem, updates and strategic developments, positioning them advantageously for potential future
+          gains.</p>
+          <p>Join us as we lead the evolution of commerce, making cryptocurrency transactions seamless and mainstream. Be a part of
+          JILAl's vision for transforming the financial landscape into a more efficient and innovative ecosystem.</p>
+          <p class="pb-0">Secure your investment by participating in the private presale today.</p>
+      </div>
+    </div>
+  </div>
+</div>

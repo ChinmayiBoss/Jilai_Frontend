@@ -1,0 +1,553 @@
+<section class="profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4">
+        <app-sidebar />
+      </div>
+      <div class="col-lg-9 col-md-8">
+          <div class="signup-wrap">
+            <a [routerLink]="['/home']" class="d-flex align-items-center gap-2 back-arrow"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10.1 23a1 1 0 0 0 0-1.41L5.5 17h23.55a1 1 0 0 0 0-2H5.53l4.57-4.57A1 1 0 0 0 8.68 9l-6.36 6.37a.9.9 0 0 0 0 1.27L8.68 23a1 1 0 0 0 1.42 0Z" data-name="Layer 2" fill="currentColor" class="fill-000000"></path></svg> Back</a>
+            <h3>Your Profile</h3>
+            <p>Manage your account information effortlessly.</p>
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit2()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">First Name*</label>
+                    <input type="text" class="form-control" formControlName="first_name"
+                           placeholder="Savannah" readonly>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Last Name*</label>
+                    <input type="text" class="form-control" formControlName="last_name"
+                           placeholder="Nguyen" readonly>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Email Id*</label>
+                    <input type="email" class="form-control" placeholder="savannahnguyen456@gmail.com" formControlName="email" readonly>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="phone-conuntry form-group relative">
+                    <label for="phone_number">Phone Number <span class="mandatory">*</span></label>
+                    <div
+                      class="relative form-control">
+                      <button class="dropdown-country" type="button"
+                        (click)="toggleList = !toggleList;$event.preventDefault();">
+                        <span class="whitespace-nowrap"> + {{selectedCountry?.dialCode}}</span>
+                        <div><img src="assets/images/dropdown-phone-arrow.svg" alt="" class="w-3 h-3"></div>
+                      </button>
+                      <div class="br-line"></div>
+                      <input type="text" formControlName="phone_number"
+                        class="form-control input-calc"
+                        [placeholder]=" 'Enter Phone number'" (input)="keyUpPhoneNumber($event)" [mask]="'0*'"
+                        minlength="6" maxlength="13">
+                    </div>
+
+                    <div class="dropdown-country-list" *ngIf="toggleList">
+                      <div class=" mt-0 p-2 ">
+                        <input type="text" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
+                          (input)="searchCountryCode()"
+                          placeholder="Enter Country name or code"
+                          class="form-control">
+                      </div>
+                      <ul
+                        class="">
+                        <li class="px-3 py-2  mx-2 flex-row" *ngFor="let data of   filteredCountryDetailsList
+                          ; let i = index" (click)="selectCountry(data)"
+                          [ngClass]="{ 'list-active-bg': selectedCountry?.dialCode === data?.dialCode }">
+                          <p><span class="pr-4"><img class="inline"
+                                [src]="'assets/images/flags/'+ data.code.toLowerCase()+'.png'"
+                                alt="{{data?.name}} flag"></span><span>{{data?.name}}</span> <span
+                              class="pl-4 text-grey">{{data?.dialCode}}</span>
+                          </p>
+                          <img src="assets/images/flags/list-selected.svg" class="list-selected" alt="digital vault"
+                            *ngIf="selectedCountry?.code === data?.code">
+                        </li>
+                      </ul>
+                    </div>
+
+                    <ng-container *ngIf="profileForm.get('phone_number')?.invalid && (profileForm.get('phone_number')?.dirty || profileForm.get('phone_number')?.touched)">
+                      <div *ngIf="profileForm.get('phone_number')?.hasError('required')"
+                        class="text-danger small">
+                        Phone Number is required.
+                      </div>
+                      <div *ngIf="profileForm.get('phone_number')?.hasError('minlength') || profileForm.get('phone_number')?.hasError('maxlength')"
+                        class="text-danger small">
+                        Phone Number should be of 6 to 13 digits only.
+                      </div>
+                    </ng-container>
+                  </div>
+
+                  <!-- <div class="phone-conuntry form-group relative">
+                    <label for="">Phone Number*</label>
+                    <div
+                    class="relative form-control">
+                      <span class="text-base font-medium">+</span>
+                      <input type="number" class="form-control dropdown-country" formControlName="country_code">
+                      <div class="br-line"></div>
+                      <input type="number" class="form-control" placeholder="+91 96765 25347" formControlName="phone_number">
+                    </div>
+                    <ng-container *ngIf="profileForm.get('phone_number')?.invalid && (profileForm.get('phone_number')?.dirty || profileForm.get('phone_number')?.touched)">
+                      <div *ngIf="profileForm.get('phone_number')?.hasError('required')"
+                        class="text-danger small">
+                        Phone Number is required.
+                      </div>
+                      <div *ngIf="profileForm.get('phone_number')?.hasError('minlength') || profileForm.get('phone_number')?.hasError('maxlength')"
+                        class="text-danger small">
+                        Phone Number should be of 6 to 13 digits only.
+                      </div>
+                    </ng-container>
+                  </div> -->
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Full Address*</label>
+                    <input type="text" class="form-control" id="full_address" placeholder="3/1, Siva hospital" formControlName="full_address" autocomplete="off">
+                    <ng-container *ngIf="profileForm.get('full_address')?.invalid && (profileForm.get('full_address')?.dirty || profileForm.get('full_address')?.touched)">
+                      <div *ngIf="profileForm.get('full_address')?.hasError('required')"
+                        class="text-danger small">
+                        Full Address is required.
+                      </div>
+                      <div *ngIf="profileForm.get('full_address')?.hasError('pattern')"
+                      class="text-danger small">
+                      Full Address must start with a letter and can only contain alphabetic characters and spaces.
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">City*</label>
+                    <input type="text" class="form-control" id="city" placeholder="Coimbatore" formControlName="city" autocomplete="off">
+                    <ng-container *ngIf="profileForm.get('city')?.invalid && (profileForm.get('city')?.dirty || profileForm.get('city')?.touched)">
+                      <div *ngIf="profileForm.get('city')?.hasError('required')"
+                        class="text-danger small">
+                        City is required.
+                      </div>
+                      <div *ngIf="profileForm.get('city')?.hasError('pattern')"
+                      class="text-danger small">
+                      City must start with a letter and can only contain alphabetic characters and spaces.
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">State*</label>
+                    <input type="text" class="form-control" id="state" placeholder="Tamilnadu" formControlName="state" autocomplete="off">
+                    <ng-container *ngIf="profileForm.get('state')?.invalid && (profileForm.get('state')?.dirty || profileForm.get('state')?.touched)">
+                      <div *ngIf="profileForm.get('state')?.hasError('required')"
+                        class="text-danger small">
+                        State is required.
+                      </div>
+                      <div *ngIf="profileForm.get('state')?.hasError('pattern')"
+                      class="text-danger small">
+                      State must start with a letter and can only contain alphabetic characters and spaces.
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Country*</label>
+                    <input type="text" class="form-control" id="state" placeholder="India" formControlName="country" autocomplete="off">
+                    <ng-container *ngIf="profileForm.get('country')?.invalid && (profileForm.get('country')?.dirty || profileForm.get('country')?.touched)">
+                      <div *ngIf="profileForm.get('country')?.hasError('required')"
+                        class="text-danger small">
+                        Country is required.
+                      </div>
+                      <div *ngIf="profileForm.get('country')?.hasError('pattern')"
+                      class="text-danger small">
+                      Country must start with a letter and can only contain alphabetic characters and spaces.
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Zip Code*</label>
+                    <input type="text" class="form-control" (keydown)="restrictToNumbers($event)" id="zip_code" placeholder="641045" formControlName="zip_code" autocomplete="off">
+                    <ng-container *ngIf="profileForm.get('zip_code')?.invalid && (profileForm.get('zip_code')?.dirty || profileForm.get('zip_code')?.touched)">
+                      <div *ngIf="profileForm.get('zip_code')?.hasError('required')"
+                        class="text-danger small">
+                        Zip Code is required.
+                      </div>
+                      <div *ngIf="profileForm.get('zip_code')?.hasError('minlength') || profileForm.get('zip_code')?.hasError('maxlength')"
+                        class="text-danger small">
+                        Zip Code should be of 4 to 13 digits only.
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">KYC*</label>
+                    <input type="text" class="form-control" placeholder="Verification in Progress" [value]="verification_status" readonly>
+                  </div>
+                </div>
+                <div class="col-md-12 min-h-10">
+                  <ng-container  *ngIf="walletAddressArray.length">
+                    <div class="form-group mb-0">
+                      <label>Wallet Address*</label>
+                      <div class="wallet-address form-control" style="height: auto;">
+                        <div *ngFor="let wallet of walletAddressArray" class="d-flex justify-content-between align-items-center mb-2">
+                          <span style="word-break: break-word;">{{ wallet }}</span>
+                          <span (click)="copyToClipboard(wallet)" style="cursor: pointer;">
+                            <img src="assets/images/copy.svg" alt="copy" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="col-md-12 form-group">
+                  <div class="row">
+                    <div *ngIf="!affiliate"  class="col-md-12 mt-3">
+                      <div class="form-check" data-bs-toggle="modal" data-bs-target="#affiliate-agreementModal">
+                        <input type="checkbox" name="affiliate" formControlName="is_being_affilate" class="form-check-input"
+                          id="affilateCheck1" >
+                        <label class="form-check-label mb-0" for="affilateCheck1">I am interested in <a>being an affiliate</a></label>
+                      </div>
+                    </div>
+
+                    <div *ngIf="affiliate"  class="col-md-12 mt-3">
+                      <div>
+                        <p class="font-bold text-white d-flex gap-2 icon-camp mb-0"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.342 4.128a1 1 0 00.95.69h4.33c.969 0 1.371 1.24.588 1.81l-3.504 2.548a1 1 0 00-.364 1.118l1.342 4.128c.3.921-.755 1.688-1.54 1.118l-3.504-2.548a1 1 0 00-1.176 0l-3.504 2.548c-.785.57-1.84-.197-1.54-1.118l1.342-4.128a1 1 0 00-.364-1.118L2.14 9.555c-.783-.57-.38-1.81.588-1.81h4.33a1 1 0 00.95-.69l1.342-4.128z" />
+                          </svg> You are already being an affiliate!
+                        </p>
+                      </div>
+                    </div>
+
+                    <div *ngIf="!campaigner" class="col-md-12 mt-3">
+                      <div class="form-check" data-bs-toggle="modal" data-bs-target="#campaigner-agreementModal">
+                        <input type="checkbox" name="campaigner" formControlName="is_being_campaigner" class="form-check-input"
+                          id="campaignerCheck2" >
+                        <label class="form-check-label mb-0 pl-0" for="campaignerCheck2">I am interested in <a>being a campaigner</a></label>
+                      </div>
+                    </div>
+
+                    <div *ngIf="campaigner"  class="col-md-12 mt-3">
+                      <div>
+                        <p class="font-bold text-white d-flex gap-2 icon-camp mb-0"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.342 4.128a1 1 0 00.95.69h4.33c.969 0 1.371 1.24.588 1.81l-3.504 2.548a1 1 0 00-.364 1.118l1.342 4.128c.3.921-.755 1.688-1.54 1.118l-3.504-2.548a1 1 0 00-1.176 0l-3.504 2.548c-.785.57-1.84-.197-1.54-1.118l1.342-4.128a1 1 0 00-.364-1.118L2.14 9.555c-.783-.57-.38-1.81.588-1.81h4.33a1 1 0 00.95-.69l1.342-4.128z" />
+                        </svg> <span>You are already being an campaigner! Campaigner Id is <b>{{profile.campaigner_code}}</b></span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit"
+                          [ngClass]="{'btn btn-primary': profileForm.valid, 'btn btn-secondary cursor-not-allowed': !profileForm.valid}"
+                          [disabled]="!profileForm.valid"
+                          class="submit-btn w-auto mb-0 mx-auto">Update</button>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="affiliate-agreementModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="affiliate-agreementModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered  modal-lg">
+    <div class="modal-content">
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <img src="assets/images/close.png" alt="close" width="44"/>
+        </button> -->
+      <div class="modal-body">
+        <h1 id="affiliate-agreementModalLabel">AFFILIATE AGREEMENT</h1>
+        <p><b>Effective Date:</b> {{date}}</p>
+        <p><b>Parties:</b> </p>
+        <p>This <b>Affiliate Agreement</b> (“Agreement”) is entered into by and between:</p>
+        <p>
+          <b>1. The Global Charitable DAO LLC</b>, a decentralized autonomous organization legally domiciled in Wyoming, USA, operating under the Wyoming DAO Supplement and the Nevada Charitable Remainder Trust (hereinafter referred to as the “Company” or “GLOBAL CHARITABLE DAO ”); and
+        </p>
+        <p>
+          <b>2. {{ profileForm.value.first_name }} {{ profileForm.value.last_name }}</b>, a natural or legal entity agreeing to promote and support GLOBAL CHARITABLE DAO ’s mission in accordance with the terms herein (hereinafter referred to as the “Affiliate”).
+        </p>
+
+        <h2>1. PURPOSE</h2>
+        <p>
+          The Affiliate agrees to promote, market, and facilitate awareness of GLOBAL CHARITABLE DAO , its tokenized ecosystem, and its impact-driven blockchain initiatives in exchange for performance-based compensation, as outlined in this Agreement.
+        </p>
+
+        <h2>2. AFFILIATE RESPONSIBILITIES</h2>
+        <h3>2.1 Marketing & Promotion</h3>
+        <p>The Affiliate shall:</p>
+          <p>a) Promote GLOBAL CHARITABLE DAO ’s initiatives, products, or services through legally and ethically appropriate channels, including but not limited to digital marketing, social media, content creation, and networking.</p>
+          <p>b) Only use approved marketing materials provided or authorized by GLOBAL CHARITABLE DAO .</p>
+          <p>c) Ensure that all representations about GLOBAL CHARITABLE DAO  and its token (JIL.AI) are accurate and comply with <b>SEC and global crypto regulations</b>.</p>
+
+          <h3>2.2 Compliance with Laws & Regulations</h3>
+          <p>The Affiliate agrees to:</p>
+          <p>a) Adhere to <b>anti-money laundering (AML) and know-your-customer (KYC) compliance standards</b> as required by U.S. and international regulatory bodies.</p>
+          <p>b) Ensure that promotional content does not misrepresent GLOBAL CHARITABLE DAO ’s structure, financial implications, or investment returns.</p>
+          <p>c) Not target or solicit individuals from <b>sanctioned or restricted jurisdictions</b></p>
+
+          <h2>3. COMPENSATION & PAYOUTS</h2>
+          <h3>3.1 Affiliate Compensation Structure</h3>
+          <p>The Affiliate shall be compensated based on the following:</p>
+          <p>a) Referral-Based Rewards – A commission of [X]% of the total contribution from each referred contributor during the <b>private sale, airdrop, or community donation event (CDE)</b>.</p>
+          <p>b) Performance-Based Bonuses – Additional bonuses may be granted for high-performance affiliates who meet predefined engagement thresholds.</p>
+
+          <h3>3.2 Payment Terms</h3>
+          <p>a) Payments will be made in <b>JIL.AI tokens</b> unless otherwise agreed.</p>
+          <p>b) Payouts will be processed on a <b>[bi-weekly/monthly]</b> basis to the affiliate’s <b>registered wallet address</b>.</p>
+          <p>c) The minimum payout threshold is <b>[X] USD equivalent</b>. If the affiliate’s earnings are below this threshold, the balance will be carried forward to the next cycle.</p>
+
+          <h3>3.3 Chargebacks & Fraud Prevention</h3>
+          <p>a) GLOBAL CHARITABLE DAO  reserves the right to <b>reject commissions</b> for fraudulent activities, including but not limited to fake referrals, misleading advertisements, or unethical marketing tactics.</p>
+          <p>b) If a contributor requests a refund or chargeback, the associated commission will be deducted from the affiliate’s earnings.</p>
+
+          <h2>4. RESTRICTIONS & PROHIBITED ACTIVITIES</h2>
+          <p>The Affiliate must not:</p>
+          <p>a) Engage in <b>spam marketing</b>, misleading advertising, or unauthorized promotions.</p>
+          <p>b) Make any <b>investment promises, profit guarantees, or financial return projections</b> about JIL.AI tokens.</p>
+          <p>c) Promote GLOBAL CHARITABLE DAO  in <b>jurisdictions where crypto-related activities are restricted or banned</b>.</p>
+          <p>d) Modify, replicate, or create unauthorized content using GLOBAL CHARITABLE DAO ’s branding without prior written approval.</p>
+          <p>Failure to comply may result in <b>immediate termination</b> of this Agreement and forfeiture of any pending commissions.</p>
+
+          <h2>5. INTELLECTUAL PROPERTY</h2>
+          <p>a) The Affiliate acknowledges that <b>all trademarks, logos, content, and marketing materials</b> provided by Global Charitable DAO remain the exclusive property of Global Charitable DAO.</p>
+          <p>b) The Affiliate <b>may not create derivative works, modify, or alter</b> Global Charitable DAO’s branding without prior approval.</p>
+          <p>c) Unauthorized use of intellectual property may lead to legal action.</p>
+
+          <h2>6. INDEMNIFICATION & LIABILITY</h2>
+          <h3>6.1 Affiliate Indemnification</h3>
+          <p>
+            The Affiliate agrees to <b>indemnify and hold harmless</b> Global Charitable DAO, its founders, officers, and community members from any claims, damages, or legal actions arising due to the Affiliate’s marketing practices, misrepresentations, or regulatory violations.
+          </p>
+          <h3>6.2 Limitation of Liability</h3>
+          <p>GLOBAL CHARITABLE DAO  shall not be liable for:</p>
+          <p>a) Any <b>losses, damages, or financial liabilities</b> incurred by the Affiliate.</p>
+          <p>b) Delays or interruptions in payments due to <b>blockchain network congestion, hacking incidents, or unforeseen regulatory actions.</b></p>
+
+          <h2>7. TERM & TERMINATION</h2>
+          <h3>7.1 Term</h3>
+          <p>
+            This Agreement is valid from the <b>Effective Date</b> and remains in effect until terminated by either party.
+          </p>
+          <h3>7.2 Termination Clause</h3>
+          <p>a) Either party may terminate this Agreement with <b>[X] days written notice.</b></p>
+          <p>b) GLOBAL CHARITABLE DAO  may terminate this Agreement <b>immediately</b> if the Affiliate is found to be in breach of <b>compliance, ethical, or legal standards</b>.</p>
+          <p>c) Upon termination, all pending commissions shall be <b>forfeited</b>, and the Affiliate must cease using GLOBAL CHARITABLE DAO ’s branding and marketing materials.</p>
+
+          <h2>8. DISPUTE RESOLUTION</h2>
+          <p>a) Any disputes arising under this Agreement shall be resolved through <b>DAO-mediated arbitration</b> as per the Wyoming DAO governance framework.</p>
+          <p>b) If arbitration does not lead to a resolution, disputes shall be settled in a <b>Wyoming state court</b>.</p>
+
+          <h2>9. MISCELLANEOUS</h2>
+          <h3>9.1 Entire Agreement</h3>
+          <p>
+            This Agreement constitutes the entire understanding between the parties and supersedes all prior agreements, discussions, and understandings.
+          </p>
+          <h3>9.2 Modifications & Amendments</h3>
+          <p>
+            Any modifications to this Agreement <b>must be approved through GLOBAL CHARITABLE DAO  governance voting</b> and communicated in writing.
+          </p>
+          <h3>9.3 Survival Clause</h3>
+          <p>Sections related to <b>liability, indemnification, intellectual property, and dispute resolution</b> shall survive termination.</p>
+
+          <h2>10. SIGNATURES</h2>
+          <p>
+            By signing below, the parties acknowledge and agree to abide by the terms of this Agreement.
+          </p>
+          <h3>GLOBAL CHARITABLE DAO </h3>
+          <!-- <p>Authorized Representative: <b>[Jeff Mendonça]</b></p> -->
+          <!-- <p>Title: <b>Founder</b></p> -->
+          <p>Signature: <b>{{timestamp}}</b></p>
+          <p>Date: <b>{{date}}</b></p>
+
+        <div>
+          <h3>Affiliate</h3>
+          <p>Full Name/Company: <b>{{ profileForm.value.first_name }} {{ profileForm.value.last_name }}</b></p>
+          <p>Physical Address: <b>{{profileForm.value.full_address}},
+              {{profileForm.value.city}}, {{profileForm.value.state}}, {{profileForm.value.country}}, {{profileForm.value.zip_code}}</b>
+            </p>
+            <p>Email: <b>{{profileForm.value.email}}</b></p>
+            <p>Crypto Wallet for Payments: <b>{{profileForm.value.wallet_address}}</b></p>
+            <p>Signature: <b>{{timestamp}}</b></p>
+            <p>Date: <b>{{date}}</b></p>
+            <p>Geo-Location: <b>IP: {{ipAddress}}</b></p>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <button class="wallet connect" (click)="onDisagree(1)" data-bs-dismiss="modal" aria-label="Close">Disagree</button>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <button class="wallet connect" data-bs-dismiss="modal" aria-label="Close" (click)="onAgree(1)">Agree & Continue</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="campaigner-agreementModal" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="campaigner-agreementModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered  modal-lg">
+    <div class="modal-content">
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <img src="assets/images/close.png" alt="close" width="44"/>
+        </button> -->
+      <div class="modal-body">
+        <h1 id="campaigner-agreementModalLabel">SOCIAL MEDIA CAMPAIGNER AGREEMENT</h1>
+        <p><b>Effective Date:</b> {{date}}</p>
+        <p><b>Parties:</b> </p>
+        <p>This <b>Social Media Campaigner Agreement</b> (“Agreement”) is made and entered into by and between:</p>
+        <p>
+          <b>1. The Global Charitable DAO LLC</b> (“GLOBAL CHARITABLE DAO ” or the “Company”), a decentralized autonomous organization legally domiciled in Wyoming, USA, operating under the Wyoming DAO Supplement and the Nevada Charitable Remainder Trust; and
+        </p>
+        <p>
+          <b>2. {{ profileForm.value.first_name }} {{ profileForm.value.last_name }}</b> (“Campaigner”), a social media content creator engaging in promotional activities for GLOBAL CHARITABLE DAO .
+        </p>
+
+        <h2>1. PURPOSE</h2>
+        <p>
+          GLOBAL CHARITABLE DAO  engages the Campaigner to create and distribute social media content that increases awareness, engagement, and community participation. The Campaigner will be compensated based on the number of <b>likes and engagement</b> received on their posts.
+        </p>
+
+        <h2>2. SCOPE OF WORK</h2>
+        <p>The Campaigner shall:</p>
+          <p>a) Create & Share Content – Publish posts, videos, or stories on <b>[social media platforms: Twitter, Instagram, TikTok, YouTube, etc.]</b> promoting GLOBAL CHARITABLE DAO ’s mission, token sale, and community impact.</p>
+          <p>b) Use Approved Hashtags & Tags – Include <b>#JILAI #CryptoForGood #BlockchainImpact</b> and tag <b>&#64;JILAIofficial</b> in every post.</p>
+          <p>c) Engagement-Based Compensation – Be rewarded based on the <b>number of likes per post</b> as outlined in Section 4.</p>
+
+          <h2>3. CONTENT REQUIREMENTS</h2>
+          <p>The Campaigner’s posts must:</p>
+          <p>a) Be original, <b>non-deceptive</b>, and comply with <b>SEC, FTC, and social media guidelines</b>.</p>
+          <p>b) <b>Avoid making investment promises</b> or discussing potential financial gains from JIL.AI tokens.</p>
+          <p>c) Clearly <b>disclose sponsorship</b> (e.g., using “#Sponsored” or “Paid Partnership with GLOBAL CHARITABLE DAO ”).</p>
+          <p>d) Not engage in misleading tactics such as <b>fake engagement or paid likes</b>.</p>
+
+
+          <h2>4. COMPENSATION & PAYMENT TERMS</h2>
+          <h3>4.1 Engagement-Based Compensation</h3>
+          <p>
+            The Campaigner shall be compensated based on the number of likes per post as follows:
+          </p>
+          <table class="mb-4">
+            <thead>
+              <tr>
+                <th>Likes Per Post</th>
+                <th>Compensation per Post</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1,000 - 4,999</td>
+                <td>250 tokens per 1,000 likes</td>
+              </tr>
+              <tr>
+                <td>5,000 - 9,999</td>
+                <td>300 tokens per 1,000 likes</td>
+              </tr>
+              <tr>
+                <td>10,000 - 49,999</td>
+                <td>400 tokens per 1,000 likes</td>
+              </tr>
+              <tr>
+                <td>50,000+</td>
+                <td>Bonus of an additional 5000 tokens</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>4.2 Payment Method & Frequency</h3>
+          <p>a) Payments will be made in <b>JIL.AI tokens</b> (or other agreed payment method).</p>
+          <p>b) Compensation will be <b>calculated at the end of the Community</b> Contribution Event based on verified engagement metrics.</p>
+          <p>c) Payment will be processed prior to DEX listing and to the Campaigner’s <b>crypto wallet</b>.</p>
+
+          <h3>4.3 Engagement Verification</h3>
+          <p>a) GLOBAL CHARITABLE DAO  will verify engagement using <b>platform analytics</b> and third-party tools.</p>
+          <p>b) Fake likes (bot-generated or paid engagements) will result in disqualification of earnings.</p>
+
+          <h2>5. CONTENT OWNERSHIP & USAGE RIGHTS</h2>
+          <p>a) GLOBAL CHARITABLE DAO  retains a <b>non-exclusive, royalty-free, worldwide license</b> to use the Campaigner’s content for marketing, reposting, and promotional purposes.</p>
+          <p>b) The Campaigner may continue using their content but <b>cannot reuse it for other crypto promotions</b> without prior approval.</p>
+
+          <h2>6. COMPLIANCE & RESTRICTIONS</h2>
+          <p>The Campaigner <b>must not:</b></p>
+          <p>a) Misrepresent GLOBAL CHARITABLE DAO , its governance structure, or tokenomics.</p>
+          <p>b) Engage in <b>spam, deceptive practices, or artificial engagement</b>.</p>
+          <p>c) Promote GLOBAL CHARITABLE DAO  in <b>restricted jurisdictions</b> or to individuals under <b>legal age</b>.</p>
+          <p>d) Use offensive, misleading, or inappropriate content.</p>
+
+          <h2>7. LIABILITY & INDEMNIFICATION</h2>
+          <h3>7.1 Indemnification</h3>
+          <p>The Campaigner <b>agrees to indemnify and hold harmless</b> GLOBAL CHARITABLE DAO , its members, and affiliates from any claims or damages arising from misleading content, regulatory violations, or unauthorized promotions.</p>
+          <h3>7.2 Limitation of Liability</h3>
+          <p>GLOBAL CHARITABLE DAO  shall not be liable for:</p>
+          <p>a) Social media platform bans, content takedowns, or engagement fluctuations.</p>
+          <p>b) Payment delays due to <b>blockchain network congestion or verification disputes</b>.</p>
+
+          <h2>8. TERM & TERMINATION</h2>
+          <h3>8.1 Term</h3>
+          <p>This Agreement is effective from the <b>Effective Date</b> and remains valid for <b>[24] months</b>, unless terminated earlier.</p>
+          <h3>8.2 Termination Clause</h3>
+          <p>a) Either party may terminate this Agreement with <b>[7] days written notice</b>.</p>
+          <p>b) GLOBAL CHARITABLE DAO  <b>may terminate immediately</b> for policy violations or fraudulent activity.</p>
+          <p>c) Upon termination, all pending compensation for unverified engagement will be <b>forfeited</b>.</p>
+
+          <h2>9. DISPUTE RESOLUTION</h2>
+          <p>a) Disputes shall first be addressed through <b>DAO mediation</b> under the Wyoming DAO governance framework.</p>
+          <p>b) If unresolved, the matter shall be settled in a <b>Wyoming state court</b>.</p>
+
+          <h2>10. MISCELLANEOUS</h2>
+          <h3>10.1 Entire Agreement</h3>
+          <p>This Agreement represents the <b>entire understanding</b> between the parties.</p>
+          <h3>10.2 Amendments</h3>
+          <p>Modifications require <b>DAO governance approval</b> and written notice.</p>
+          <h3>10.3 Survival Clause</h3>
+          <p>Sections related to <b>liability, content ownership, and compliance</b> shall survive termination.</p>
+
+          <h2>11. SIGNATURES</h2>
+          <p>By signing below, both parties agree to the terms of this Agreement.</p>
+          <h3>GLOBAL CHARITABLE DAO</h3>
+          <!-- <p>Authorized Representative: <b>[Jeff Mendonça]</b></p>
+          <p>Title: <b>Founder</b></p> -->
+          <p>Signature: <b>{{timestamp}}</b></p>
+          <p>Date: <b>{{date}}</b></p>
+
+          <div>
+            <h3>Campaigner</h3>
+            <p>Full Name/Company: <b>{{ profileForm.value.first_name }} {{ profileForm.value.last_name }}</b></p>
+            <p>Social Media Handle(s): <b>[&#64;handle]</b></p>
+              <p>Email: <b>{{profileForm.value.email}}</b></p>
+              <p>Crypto Wallet for Payments: <b>{{profileForm.value.wallet_address}}</b></p>
+              <p>Signature: <b>{{timestamp}}</b></p>
+              <p>Date: <b>{{date}}</b></p>
+              <p>Geo-Location: <b>IP: {{ipAddress}}</b></p>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <button class="wallet connect" (click)="onDisagree(2)" data-bs-dismiss="modal" aria-label="Close">Disagree</button>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <button class="wallet connect" (click)="onAgree(2)" data-bs-dismiss="modal" aria-label="Close">Agree & Continue</button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

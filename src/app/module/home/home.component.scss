@@ -1,0 +1,478 @@
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.disabled-button {
+  /* Define your styles for disabled buttons */
+  opacity: 0.6; /* Example: reduce opacity */
+  cursor: not-allowed; /* Example: change cursor */
+  /* Add more styles as needed */
+}
+.video-link-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.hyperlink-yellow {
+  color: #b434eb;
+  text-decoration: underline var(--w3m-accent-color)
+}
+.pt-0 h4{
+  padding-top: 0px !important;
+}
+.detail.pt-0 h4{
+   padding-bottom: 20px;
+}
+.roadmap-wrap {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+.roadmap-wrap:before, .roadmap-wrap:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  z-index: 7;
+}
+.roadmap-line {
+  position: absolute;
+  top: 0;
+  background: #c1cef1;
+  height: 100%;
+  width: 2px;
+  content: '';
+  z-index: 9;
+}
+/** start roadmap**/
+.roadmap-wrap {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.roadmap-wrap:before,
+.roadmap-wrap:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  z-index: 7;
+}
+
+.roadmap-line {
+  position: absolute;
+  top: 0;
+  background: #c1cef1;
+  height: 100%;
+  width: 2px;
+  content: '';
+  z-index: 9;
+}
+
+.roadmap-line:after,
+.roadmap-line:before {
+  position: absolute;
+  background: #c1cef1;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  content: '';
+  left: -4px;
+}
+
+.roadmap-line:before {
+  top: 0;
+}
+
+.roadmap-line:after,
+.roadmap-line:before {
+  position: absolute;
+  background: #c1cef1;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  content: '';
+  left: -4px;
+}
+
+.roadmap-line:after {
+  bottom: 0;
+}
+
+.roadmap {
+  position: relative;
+  z-index: 10;
+  padding-bottom: 30px;
+}
+
+.roadmap-year {
+  border-radius: 50%;
+  color: #fff;
+  background: #181b34;
+  text-align: center;
+  font-weight: 700;
+  left: -5px;
+}
+
+.roadmap-step {
+  border: 1px solid #dbe4f7;
+  border-radius: 5px;
+  position: relative;
+  position: relative;
+  max-width: 380px;
+  background: #00000025;
+}
+
+.roadmap-step:before {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  background: #040914;
+  left: -91px;
+  top: 34px;
+}
+
+.roadmap-step:after {
+  height: 2px;
+  width: 77px;
+  background: #dbe4f7;
+  left: -78px;
+  top: 42px;
+}
+
+.roadmap-title {
+  color: #fff;
+  font-size: 24px;
+}
+
+.roadmap-step p {
+  color: #fff;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0rem !important;
+}
+
+.bg-green {
+  background-color: #00000055;
+  border: 1px solid var(--white);
+}
+
+.bg-perks {
+  border: 2px solid #b434eb!important;
+}
+.cstage{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:10px;
+  flex-wrap: wrap;
+}
+.cstage p{
+  padding: 0 0 15px;
+}
+.presale .info{
+  font-size: 13px;
+}
+@media (min-width: 320px) and (max-width: 991px) {
+  .roadmap-line {
+      position: absolute;
+      left: 19px;
+      top: 0;
+      background: #c1cef1;
+      height: 100%;
+      width: 2px;
+      content: '';
+      z-index: 0;
+  }
+  .roadmap-year {
+      border-radius: 50%;
+      color: #fff;
+      background: #040914;
+      height: 50px!important;
+      width: 50px!important;
+      text-align: center;
+      line-height: 50px!important;
+      font-weight: 700;
+      font-size: 12px;
+      position: relative;
+      left: -5px;
+  }
+  .roadmap-step {
+      border: 2px solid #dbe4f7;
+      border-radius: 5px;
+      position: relative;
+      margin-left: 50px;
+      padding: 20px 20px 15px;
+      position: relative;
+      max-width: 380px;
+  }
+  .roadmap-step:before,
+  .roadmap-step:after {
+      position: absolute;
+      content: '';
+  }
+  .roadmap-step:before {
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      background: #040914!important;
+      left: -41px!important;
+      top: 34px!important;
+  }
+  .roadmap-step:after {
+      height: 2px;
+      width: 21px!important;
+      background: #dbe4f7;
+      left: -22px!important;
+      top: 42px!important;
+  }
+  .roadmap-title {
+      font-size: 18px;
+      font-weight: 700;
+      padding-bottom: 5px;
+  }
+  .roadmap-step p {
+      color: #fff;
+      font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) {
+  .roadmap-step:before,
+  .roadmap-step:after {
+      position: absolute;
+      content: '';
+  }
+  .roadmap-right .roadmap-step {
+      margin-left: 80px;
+  }
+  .roadmap-wrap {
+      padding: 40px 0 10px;
+      margin-bottom: 60px;
+      max-width: 100%;
+  }
+  .roadmap-year {
+      height: 60px;
+      width: 60px;
+      line-height: 60px;
+      font-size: 16px;
+      position: static;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .roadmap-left {
+      justify-content: flex-start;
+      margin-top: -80px;
+  }
+  .roadmap-right {
+      justify-content: flex-end!important;
+  }
+  .roadmap-line {
+      left: 50%;
+      margin-left: -1px;
+  }
+  .roadmap {
+      display: flex;
+  }
+  .roadmap-right .roadmap-step {
+      margin-left: 80px;
+  }
+  .roadmap-step {
+      width: 100%;
+      padding: 30px;
+  }
+  .roadmap-step:before,
+  .roadmap-step:after {
+      position: absolute;
+      content: '';
+  }
+  .roadmap-title {
+      font-size: 20px;
+      font-weight: 700;
+      padding-bottom: 5px;
+  }
+  .roadmap-left .roadmap-step:before {
+      left: auto;
+      right: -96px;
+  }
+  .roadmap-left .roadmap-step:after {
+      left: auto;
+      right: -78px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .roadmap-step:before {
+      left: -95px;
+  }
+  .roadmap-step:after {
+      width: 76px;
+      left: -77px;
+  }
+  .roadmap-left .roadmap-step:before {
+      right: -94px;
+  }
+  .roadmap-left .roadmap-step:after {
+      right: -77px!important;
+  }
+}
+
+@media (min-width: 576px) {
+  .token-content {
+      padding-right: 15px;
+      text-align: left;
+      padding-top: 0;
+      width: 400px;
+      max-width: 400px;
+      margin: auto;
+  }
+}
+
+.vesting-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+
+
+
+.modal-content{
+  border-radius: 25px;
+  border: 1px solid var(--JilAi-Blue-Linear, #24F3EA);
+  background: linear-gradient(90deg, rgba(36, 243, 234, 0.10) 0.08%, rgba(97, 157, 202, 0.10) 89.66%);
+  backdrop-filter: blur(150px);
+  padding: 50px;
+  height: calc(100vh - 100px);
+}
+
+.modal-content h1{
+  color: #24F3EA;
+  font-family: Orbitron;
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 127%;
+  padding-bottom: 25px;
+  margin:0;
+}
+.modal-content h2 {
+  color: #24F3EA;
+  font-family: Orbitron;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 127%;
+  padding-bottom: 15px;
+  margin-top: 20px;
+}
+.modal-content h3 {
+  color: #C5DBFF;
+  font-family: Orbitron;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 127%;
+  padding-bottom: 10px;
+  margin:0;
+}
+.modal-content p, .modal-content li{
+  color: #BFC0D2;
+  font-family: "ProximaNovaFont", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 132%;
+  margin:0;
+  padding: 0 0 15px;
+}
+.modal-lg{
+  max-width: 980px;
+}
+.modal-body{
+  padding: 0;
+  padding-right: 15px;
+  height: 100%;
+  overflow-y: auto;
+}
+p b, li b{
+  color: #fff;
+}
+@media(max-width:1199px){
+  .modal-content{
+    padding: 30px;
+  }
+  .modal-content h1{
+    font-size: 28px;
+    padding-bottom: 25px;
+  }
+  .modal-content p, .modal-content li{
+    font-size: 18px;
+    padding: 0 0 15px;
+  }
+  .modal-lg{
+    max-width: 87%;
+    margin-right: auto;
+    margin-left: auto;
+    --bs-modal-margin: 1.75rem;
+  }
+}
+@media(max-width:991px){
+  .modal-content{
+    padding: 25px;
+  }
+  .modal-content h1{
+    font-size: 24px;
+    padding-bottom: 15px;
+  }
+  .modal-content h2 {
+    font-size: 22px;
+  }
+  .modal-content h3 {
+    font-size: 20px;
+  }
+  .modal-content p, .modal-content li{
+    font-size: 18px;
+    padding: 0 0 10px;
+  }
+}
+@media(max-width:767px){
+  .modal-content{
+    padding: 20px;
+  }
+  .modal-content h1{
+    font-size: 22px;
+  }
+  .modal-content h2 {
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
+  .modal-content h3 {
+    font-size: 18px;
+  }
+  .modal-content p, .modal-content li{
+    font-size: 17px;
+  }
+}
+@media(max-width:576px){
+  .modal-content{
+    padding: 20px;
+  }
+  .modal-content h1{
+    font-size: 20px;
+  }
+  .modal-content h2 {
+    font-size: 18px;
+  }
+  .modal-content h3 {
+    font-size: 16px;
+  }
+  .modal-content p, .modal-content li{
+    font-size: 15px;
+  }
+  .modal-lg{
+    max-width: 84%;
+  }
+}
