@@ -32,5 +32,6 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
+          port: ${{ secrets.EC2_PORT }}
           source: "dist/jilai-frontend/*"
           target: "/var/www/html"
