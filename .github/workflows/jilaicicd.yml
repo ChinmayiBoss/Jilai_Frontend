@@ -20,9 +20,8 @@ jobs:
 
       - name: Install & Build
         run: |
-          npm ci
-          npm run build -- --configuration production
-
+          npm install
+          npm run build 
       # Debug step: list dist contents to confirm folder name
       - name: Check dist folder
         run: ls -R dist/
