@@ -1,7 +1,10 @@
-name: Deploy Angular Frontend to EC2
+name: Angular CI/CD
 
 on:
   push:
+    branches:
+      - main  
+  pull_request:
     branches:
       - main
 
@@ -16,18 +19,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 20 
+    
+      - name: Install dependencies
+        run: npm install --force
 
-      - name: Install & Build
-        run: |
-          npm install --force
-          npm run build 
-
-      - name: Copy build files to EC2
+      - name: Build Angular
+        run: npm run build 
+        
+      - name: Deploy to server
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.EC2_HOST }}           
-          username: ${{ secrets.EC2_USER }}          
-          key: ${{ secrets.EC2_KEY }}               
-          source: "index.html"           
-          target: "/var/www/html/index.html"      
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          source: "dist/*"
+          target: "/var/www/html"
