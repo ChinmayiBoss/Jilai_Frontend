@@ -43,6 +43,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           port: 22
-          source: "./dist"
-          target: "/var/www/html/"
-          
+          source: "dist/jilai-frontend/*"
+          target: "/var/www/html/jilai-frontend"
+          strip_components: 2   # 👈 removes "dist/jilai-frontend" from paths
+          rm: false
+          debug: true
