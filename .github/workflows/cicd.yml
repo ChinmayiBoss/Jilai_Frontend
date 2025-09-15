@@ -43,8 +43,20 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           port: 22
-          # 👇 copy the Angular app folder only (not entire dist)
-          source: "./dist/*"
-          target: "/var/www/html"
-          rm: false     # safer: don't delete target folder
+          source: "./dist/*"   # copy only Angular build output
+          target: "/var/www/html/jilai"
+          rm: false
           debug: true
+
+      # 7. Fix permissions on server
+      - name: Set permissions
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          script: |
+            sudo mkdir -p /var/www/html/jilai
+            sudo chown -R $USER:$USER /var/www/html/jilai
+            sudo chmod -R 755 /var/www/html/jilai
