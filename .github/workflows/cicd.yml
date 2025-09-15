@@ -42,8 +42,9 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
+          port: 22
           # 👇 copy the Angular app folder only (not entire dist)
-          source: "dist/jilai/browser/index.html/*"
+          source: "./dist/*"
           target: "/var/www/html"
           rm: false     # safer: don't delete target folder
           debug: true
