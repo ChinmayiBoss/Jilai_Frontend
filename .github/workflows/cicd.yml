@@ -3,7 +3,7 @@ name: Angular CI/CD
 on:
   push:
     branches:
-      - main  
+      - main
   pull_request:
     branches:
       - main
@@ -13,44 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
- 
+      # 1. Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm install --force
 
+      # 4. Build Angular
       - name: Build Angular
         run: npm run build 
 
-      - name: Package dist folder
-        run: |
-          tar -czf /tmp/angular-app.tar.gz -C dist/jilai-frontend .
+      # 5. Verify build output
+      - name: List dist folder
+        run: ls -la dist/
 
-      - name: Deploy tar.gz to server
+      # 6. Deploy to server
+      - name: Deploy to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: "/tmp/angular-app.tar.gz"
-          target: "/var/www/html"
-          strip_components: 0
+          source: "dist/*"
+          target: "/var/www/html/jilai-frontend"
           rm: true
           debug: true
-
-      - name: Extract tar.gz on server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          script: |
-            mkdir -p /var/www/html/jilai-frontend
-            tar -xzf /var/www/html/angular-app.tar.gz -C /var/www/html/jilai-frontend
-            rm /var/www/html/angular-app.tar.gz
