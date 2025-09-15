@@ -27,10 +27,10 @@ jobs:
       - name: Install dependencies
         run: npm install --force
 
-      # 4. Build Angular
+      # 4. Build Angular (production build)
       - name: Build Angular
         run: npm run build 
-
+        
       # 5. Verify build output
       - name: List dist folder
         run: ls -la dist/
@@ -42,7 +42,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: "dist/*"
-          target: "/var/www/html/jilai-frontend"
-          rm: true
+          # 👇 copy the Angular app folder only (not entire dist)
+          source: "dist/jilai/browser/index.html/*"
+          target: "/var/www/html"
+          rm: false     # safer: don't delete target folder
           debug: true
