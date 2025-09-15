@@ -26,15 +26,15 @@ jobs:
       - name: Deploy to server
         uses: appleboy/scp-action@master
         with:
-         host: ${{ secrets.EC2_HOST }}
-         username: ${{ secrets.EC2_USER }}
-         key: ${{ secrets.EC2_KEY }}
-         port: 22
-         source: "dist/Jilai_Frontend/*"
-         target: "/var/www/html/"
-         strip_components: 1   # 👈 only strip "dist", keep project folder
-         rm: false
-         debug: true
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          source: "dist/jilai/*"   # 👈 lowercase (check with `ls dist/`)
+          target: "/var/www/html/"
+          strip_components: 1
+          rm: false
+          debug: true
 
 
 
