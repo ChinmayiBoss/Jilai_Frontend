@@ -1,50 +1,50 @@
-name: Angular CI/CD
+
+
+name: Deploy Angular Frontend to EC2
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      # 2. Setup Node.js
+        
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
-
-      # 3. Install dependencies
-      - name: Install dependencies
-        run: npm install --force
-
-      # 4. Build Angular (production build)
-      - name: Build Angular
-        run: npm run build 
-        
-      # 5. Verify build output
-      - name: List dist folder
-        run: ls -la dist/
-
-      # 6. Deploy to server
-      - name: Deploy to server
+          
+      - name: Install & Build
+        run: |
+          npm install --force
+          npm run build
+          
+      - name: Copy build files to EC2
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          port: 22
-          source: "dist/jilai-frontend/*"
-          target: "/var/www/html/jilai-frontend"
-          strip_components: 2   # 👈 removes "dist/jilai-frontend" from paths
-          rm: false
-          debug: true
+          source: "dist/**"
+          target: "/var/www/html/"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
