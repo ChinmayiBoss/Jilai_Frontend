@@ -30,6 +30,9 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           port: 22
+          script: |
+            sudo mkdir -p /var/www/html/jilai
+            sudo tar -xzf /home/${{ secrets.EC2_USER }}/build.tar.gz -C /var/www/html/jilai
           source: "dist/jilai/*"   # 👈 lowercase (check with `ls dist/`)
           target: "/var/www/html/"
           strip_components: 1
