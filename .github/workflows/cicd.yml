@@ -33,13 +33,20 @@ jobs:
           script: |
             sudo mkdir -p /var/www/html/jilai
             sudo tar -xzf /home/${{ secrets.EC2_USER }}/build.tar.gz -C /var/www/html/jilai
-          source: "dist/jilai/*"   # 👈 lowercase (check with `ls dist/`)
+          source: "dist/jilai/*"   
           target: "/var/www/html/"
           strip_components: 1
           rm: false
           debug: true
-
-
+      - name: Extract Build & Reload Nginx
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          script: |
+            sudo mkdir -p /var/www/html/jilai
+            sudo tar -xzf /home/${{ secrets.EC2_USER }}/build.tar.gz -C /var/www/html/jilai
+            # Reload Nginx to apply new domain/SSL
+            sudo nginx -t
+            sudo systemctl reload nginx
 
 
 
